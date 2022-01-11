@@ -36,7 +36,7 @@
 		- Templates(HTML, Bootstrap(CSS, JavaScript), ORM 사용)
 		- Named Entity Recognition(㈜TwoBlockAI에서 제공한 학습용 NER모델 API 활용)
 	2. ### Classifier ###
-		- Word2Vec:유사 키워드 기반 데이터 분석 모델 구현
+		- Word2Vec:유사 키워드 기반 카테고라이저 구현
 		- BERT(BertForSequenceClassification):transfer learning
 5. ## 테스트 ##
 	- 개발 기능 별 단위 테스트 병행
