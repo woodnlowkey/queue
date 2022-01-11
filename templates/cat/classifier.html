@@ -1,0 +1,116 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="container my-5">
+    <!-- text_input, analyze_button -->
+    <h1 class="text-center text-dark">News Classifier</h1><br>
+    <div class="row">
+        <div class="col-12 mb-3">
+            <caption class="col-12 display-block text-dark" style="caption-side: top;">
+                ▶ '21년 10월 6일부터 25일까지 20일간 약 12,000건의 기사 데이터로 학습된 모델입니다.<br>
+                ▶ '내용 구분'은 글자수 기준으로 상단과 하단(1/2)으로 구분합니다.<br>
+                ▶ '카테고리'는 정치, 세계, IT, 스포츠로 한정되어 구분합니다.<br>
+            </caption>
+        </div>
+        <div class="col-12 input-group">            
+            <textarea type="text" class="form-control border-dark rounded kw" rows="10" placeholder="기사를 입력하세요.(최소 300자 이상)" value="{{ kw|default_if_none:'' }}"></textarea>
+            <button class="btn btn-block btn-outline-dark my-2" type="button" id="btn_search">분석</button>
+        </div>
+    </div>
+    <!-- /text_input, analyze_button -->
+    <!-- w2v analysis -->
+    <table class="table table-hover my-5">
+        <caption style="caption-side: bottom; font-size: smaller;">1) '데이터 분석 키워드'는 입력된 기사 내 키워드의 유사 키워드를 예측한 빈도 상위 5개 결과임<br>2) '키워드 유사도'는 입력된 기사 내 키워드가 예측 카테고리 키워드와 유사한 정도를 나타냄 (※동률인 경우 2 line으로 나타냄)</caption>
+        <thead>
+            <tr class="text-center thead-dark">
+                <th colspan="4">W2V 모델 분석결과</th>
+            </tr>
+        </thead>
+        <tbody class="table-sm">
+        <tr class="text-center">
+            <td>기사 내용 구분</td>
+            <td style="width:50%;">데이터 분석 키워드</td>
+            <td>예측 카테고리</td>
+            <td>키워드 유사도</td>
+        </tr>    
+        <!-- w2v 결과가 빈 리스트가 아닐 경우 -->
+        {% if top_result_list %}
+        {% for category, words in top_result_list %}
+        <tr class="text-center">
+            <td>상단</td>
+            <td style="text-align:center;">{% for i in words %}'{{ i }}' {% endfor %}</td>
+            <td>{{ category.0 }}</td>
+            <td>{{ category.1 }}</td>
+        </tr>
+        {% endfor %}
+        {% for category, words in bottom_result_list %}
+        <tr class="text-center">
+            <td>하단</td>
+            <td style="text-align:center;">{% for i in words %}'{{ i }}' {% endfor %}</td>
+            <td>{{ category.0 }}</td>
+            <td>{{ category.1 }}</td>
+        </tr>
+        {% endfor %}
+        {% else %}
+        <tr class="text-center">
+            <td colspan="4">입력된 기사가 없거나 짧습니다.</td>
+        </tr>
+        {% endif %}
+        </tbody>
+    </table>
+    <!-- w2v analysis -->
+
+    <!-- BERT analysis-->
+    <table class="table table-hover my-5">
+        <thead>
+            <tr class="text-center thead-dark">
+                <th colspan="6">BERT 모델 분석결과</th>
+            </tr>
+        </thead>
+        <tbody class="table-sm">
+        <tr class="text-center thead-dark">
+            <td>기사 내용 구분</td>
+            <td>정치 점수</td>
+            <td>세계 점수</td>
+            <td>스포츠 점수</td>
+            <td>IT 점수</td>
+            <td>예측 카테고리</td>
+        </tr>
+        {% if bert_top %}
+        <tr class="text-center">
+            <td>상단</td>
+            <td>{{bert_top.1.0}}</td>
+            <td>{{bert_top.1.1}}</td>
+            <td>{{bert_top.1.2}}</td>
+            <td>{{bert_top.1.3}}</td>
+            <td>{{bert_top.0}}</td>
+        </tr>
+        <tr class="text-center">
+            <td>하단</td>
+            <td>{{bert_bot.1.0}}</td>
+            <td>{{bert_bot.1.1}}</td>
+            <td>{{bert_bot.1.2}}</td>
+            <td>{{bert_bot.1.3}}</td>
+            <td>{{bert_bot.0}}</td>
+        </tr>
+        <tr class="text-center">
+            {% if bert_top.0 == bert_bot.0 %}
+            <td colspan="6">"상단"과 "하단"카테고리가 <strong>"{{bert_top.0}}"</strong>로 분석되었습니다.<br>기사 원문의 카테고리가 일관성을 보이므로 어뷰징 기사일 가능성이 낮습니다.</td>
+            {% else %}
+            <td colspan="6">"상단" 카테고리는 <strong>"{{bert_top.0}}"</strong>로 "하단"카테고리는 <strong>"{{bert_bot.0}}"</strong>로 분석되었습니다.<br>기사 원문의 카테고리가 다르므로 어뷰징 기사일 가능성이 높습니다.</td>
+            {% endif %}
+        </tr>
+        {% else %}
+        <tr class="text-center">
+            <td colspan="6">입력된 기사가 없거나 짧습니다.</td>
+        </tr>
+        {% endif %}
+        </tbody>
+    </table>
+    <!-- BERT analysis-->
+</div>
+<!-- form -->
+<form id="searchForm" method="get" action="{% url 'cat:index' %}">
+    <input type="hidden" id="kw" name="kw" value="{{ kw|default_if_none:'' }}">
+</form>
+<!-- !form -->
+{% endblock %}

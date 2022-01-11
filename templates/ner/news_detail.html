@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+{% block content %}
+{% load static %}
+<div class="container my-5">
+    <!-- news_information -->
+    <div class="card bg-dark col-12 p-4 text-light my-4">
+        <div class="card_body row align-items-center">
+            <div class="card-text col-8" style="line-height: 1.8;">{{ news.subject }}</div>
+            <div class="card-text col-4 text-right" style="line-height: 1.8;">{{ news.category }}, {{ news.author }}<br>{{ news.create_date }}</div>
+        </div>
+    </div>
+    <!-- /news_information -->
+    <div class="card bg-dark col-12 p-4">
+        <div class="card_body row  align-items-center">
+            <!-- news_contents, legend -->
+            <iframe class="col-10 pl-4 my-3" width="90%" height="520px" style="border: none;" src="{% static 'iframe.html' %}">본문 NER 결과</iframe>
+            <div class="col-2 text-center font-weight-bold">
+                <span style="color: #fdae6b;">지역</span><br><br>
+                <span style="color: #e6550d;">기관</span><br><br>
+                <span style="color: #ffd400;">인물</span><br><br>
+                <span style="color: #3182bd;">용어 / 문명</span><br><br>
+                <span style="color: #cc2673;">사건</span><br><br>
+                <span style="color: #31a354;">날짜 / 시간</span><br><br>
+                <span style="color: #c994c7;">수량</span><br><br>
+                <span style="color: #addd8e;">인공물 / 물질</span><br><br>
+                <span style="color: #6b60aa;">동물</span>
+            </div>
+            <!-- /news_contents, legend -->
+        </div>
+        <div class="row col-12 justify-content-center">
+            <!-- back_button -->
+            <button type=button value="Previous Page" onClick="window.history.back();return false;" class="btn btn-dark col-2 mx-3 p-2 text-light">목록으로</button>
+            <!-- /back_button -->
+        </div>
+    </div>
+</div>
+{% endblock %}

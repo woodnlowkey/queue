@@ -1,0 +1,16 @@
+.idea
+db.sqlite3
+*.pyc
+__pycache__
+ckh.jpg
+cwj.jpg
+cyj.jpg
+pjh.png
+epoch_5_evalAcc_94.pth
+it_w2v
+pol_w2v
+spo_w2v
+wor_w2v
+bootstrap.min.css
+bootstrap.min.js
+jquery-3.4.1.min.js

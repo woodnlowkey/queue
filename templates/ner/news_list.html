@@ -1,0 +1,102 @@
+{% extends 'base.html' %}
+{% load ner_filter %}
+{% block content %}
+<div class="container my-5">
+    <h1 class="text-center text-dark">Named Entity Recognition</h1><br>
+    <div class="col-12 mb-3">
+        <caption class="col-12 display-block text-dark" style="caption-side: top;">
+            ▶ ㈜TwoBlockAI에서 제공한 학습용 NER(개체명 인식)모델을 활용했습니다.<br>
+            ▶ Naver에서 '21년 10월 6일부터 25일까지 20일치 약 18,000건의 기사를 수집하여 정제한 데이터입니다.<br>
+            ▶ 해당 게시글 클릭시 기사 본문의 개체명 별 색상이 표시됩니다.(※ 게시글 내 색상표 참고)<br>
+        </caption>
+    </div>
+    <!-- search_function -->
+    <div class="row justify-content-between mb-5">
+        <div class="col-3">
+            <select class="form-control so">
+                <option value="relation">관련순 (키워드 빈도순)</option>
+                <option value="recent">최신순 (작성일자 기준)</option>
+            </select>
+        </div>
+        <div class="col-8 input-group">
+            <input type="text" class="form-control border-dark rounded kw" placeholder="검색어를 입력하세요." value="{{ kw|default_if_none:'' }}">
+            <button class="btn btn-block btn-outline-dark my-2" type="button" id="btn_search">검색</button>
+        </div>
+    </div>
+    <!-- /search_function -->
+    <!-- news_table -->
+    <table class="table table-hover">
+        <thead>
+        <tr class="text-center thead-dark">
+            <th class="font-weight-normal">번호</th>
+            <th style="width:60%;" class="font-weight-normal">제목</th>
+            <th class="font-weight-normal">작성일자</th>
+            <th class="font-weight-normal">언론사</th>
+        </tr>
+        </thead>
+        <tbody class="table-sm">
+        {% if news_list %}
+        {% for news in news_list %}
+        <tr class="text-center" onClick="location.href='{% url 'ner:detail' news.id %}'">
+            <td>{{ news_list.paginator.count|sub:news_list.start_index|sub:forloop.counter0|add:1 }}</td>
+            <td style="text-align:left;">{{ news.subject }}</td>
+            <td>{{ news.create_date }}</td>
+            <td>{{ news.author }}</td>
+        </tr>
+        
+        </a>
+        {% endfor %}
+        {% else %}
+        <tr>
+            <td colspan="3">No Data.</td>
+        </tr>
+        {% endif %}
+        </tbody>
+    </table>
+    <!-- /news_table -->
+    <!-- pages -->
+    <ul class="pagination justify-content-center">
+        <!-- previous -->
+        {% if news_list.has_previous %}
+        <li class="page-item">
+            <a class="page-link text-dark" data-page="{{ news_list.previous_page_number }}" href="#">Prev</a>
+        </li>
+        {% else %}
+        <li class="page-item disabled">
+            <a class="page-link text-dark" tabindex="-1" aria-disabled="true" href="#">Prev</a>
+        </li>
+        {% endif %}
+        <!-- /previous -->
+        <!-- page-list -->
+        {% for page_number in news_list.paginator.page_range %}
+        {% if page_number >= news_list.number|add:-5 and page_number <= news_list.number|add:5 %}
+            {% if page_number == news_list.number %}
+            <li class="page-item" aria-current="page"><a class="page-link text-dark bg-secondary" data-page="{{ page_number }}" href="#">{{ page_number }}</a></li>
+            {% else %}
+            <li class="page-item"><a class="page-link text-dark" data-page="{{ page_number }}" href="#">{{ page_number }}</a></li>
+            {% endif %}
+        {% endif %}
+        {% endfor %}
+        <!-- /page-list -->
+        <!-- next -->
+        {% if news_list.has_next %}
+        <li class="page-item">
+            <a class="page-link text-dark" data-page="{{ news_list.next_page_number }}" href="#">Next</a>
+        </li>
+        {% else %}
+        <li class="page-item disabled">
+            <a class="page-link text-dark" tabindex="-1" aria-disabled="true" href="#">Next</a>
+        </li>
+        {% endif %}
+        <!-- /next -->
+    </ul>
+    <!-- /pages -->
+</div>
+<!-- form -->
+<form id="searchForm" method="get" action="{% url 'ner:index' %}">
+    <input type="hidden" id="kw" name="kw" value="{{ kw|default_if_none:'' }}">
+    <input type="hidden" id="page" name="page" value="{{ page }}">
+    <input type="hidden" id="so" name="so" value="{{ so }}">
+</form>
+<!-- /form -->
+{% endblock %}

@@ -1,0 +1,101 @@
+{% extends 'base.html' %}
+{% block content %}
+{% load static %}
+<div class="container my-3">
+    <!-- logo -->
+    <div class="justify-content-center text-center py-3">
+        <img src="{% static 'logo\logodark.png' %}" alt="Team_Queue_Logo" width="30%">
+    </div>
+    <!-- /logo -->
+    <!-- team -->
+    <div class="row justify-content-center align-items-center">
+        <div class="col-8">
+            <div class="m-3 card bg-dark text-light">
+                <div class="row no-gutters">
+                    <div class="col-9">
+                        <div class="card-body">
+                            <h4 class="card-title">Kang-hee Cho</h4>
+                            <ul>
+                                <li>팀장</li>
+                                <li>Idea bank</li>
+                                <li>Iron heart</li> 
+                                <li>Excellent comprehension</li>
+                            </ul>
+                            <a href="#" class="card-link text-secondary">blog</a>
+                            <a href="#" class="card-link text-secondary">github</a>
+                            <a href="#" class="card-link text-secondary">e-mail</a>
+                        </div>
+                    </div>
+                    <div class="col-3">
+                        <img src="{% static 'members\ckh.jpg' %}" alt="Kang-hee Cho" class="card-img" />
+                    </div>
+                </div>
+            </div>
+            <div class="m-3 card bg-dark text-light">
+                <div class="row no-gutters">
+                    <div class="col-9">
+                        <div class="card-body">
+                            <h4 class="card-title">Yeon-jae Chung</h4>
+                            <ul>
+                                <li>코딩말고 다 잘함</li>
+                                <li>언어의 마술사</li>
+                                <li>Worldclass writing skills</li>
+                                <li>with MSG</li>    
+                            </ul>
+                            <a href="#" class="card-link text-secondary">blog</a>
+                            <a href="#" class="card-link text-secondary">github</a>
+                            <a href="#" class="card-link text-secondary">e-mail</a>
+                        </div>
+                    </div>
+                    <div class="col-3">
+                        <img src="{% static 'members\cyj.jpg' %}" alt="Yeon-jae Chung" class="card-img" />
+                    </div>
+                </div>
+            </div>
+            <div class="m-3 card bg-dark text-light">
+                <div class="row no-gutters">
+                    <div class="col-9">
+                        <div class="card-body">
+                            <h4 class="card-title">Woojin Choi</h4>
+                            <ul>
+                                <li>Create this website with Django</li> 
+                                <li>with googling</li>    
+                                <li>with 그림판</li>    
+                                <li>with ddonna</li>       
+                            </ul>
+                            <a href="https://vxrs3310.tistory.com/" target="_blank" class="card-link text-secondary" alt="Woojin Choi's blog">blog</a>
+                            <a href="https://github.com/woodnlowkey" target="_blank" class="card-link text-secondary" alt="Woojin Choi's github">github</a>
+                            <a href="https://mail.google.com/mail/?view=cm&amp;fs=1&amp;to=vxrs3310@gmail.com" target="_blank" class="card-link text-secondary" alt="send email to Woojin Choi">email</a>
+                        </div>
+                    </div>
+                    <div class="col-3">
+                        <img src="{% static 'members\cwj.jpg' %}" alt="Woojin Choi" class="card-img">
+                    </div>
+                </div>
+            </div>
+            <div class="m-3 card bg-dark text-light">
+                <div class="row no-gutters">
+                    <div class="col-9">
+                        <div class="card-body">
+                            <h4 class="card-title">Guitar Park</h4>
+                            <ul>
+                                <li>겨레의 늠름한 아들로 태어나</li> 
+                                <li>조국을 지키는 보람찬 길에서</li> 
+                                <li>형들 사랑해요</li> 
+                                <li>저는 군대갑니다</li>    
+                            </ul>
+                            <a href="#" class="card-link text-secondary">blog</a>
+                            <a href="#" class="card-link text-secondary">github</a>
+                            <a href="#" class="card-link text-secondary">e-mail</a>
+                        </div>
+                    </div>
+                    <div class="col-3">
+                        <img src="{% static 'members\pjh.png' %}" alt="Guitar Park" class="card-img" />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- /team -->
+</div>
+{% endblock %}
