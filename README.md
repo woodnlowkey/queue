@@ -58,5 +58,5 @@
 _woodnlowkey(woojin choi, vxrs3310@gmail.com)_
 =====
 - 조원들과 함께하는 작업에서 실무적인 계획, 설계 작업의 필요성을 느낄 수 있었습니다. Django 프레임워크를 공부하고 활용하면서 웹 어플리케이션의 동작 원리를 이해할 수 있었고 가상환경의 개념적인 부분과 작업 환경에서 문제 해결능력을 키울 수 있는 기회가 되었습니다.	
-	- 참여:과제 범위 확인, 구현 기능 설정, 요구사항 정의서 작성, 시스템 구조 설계, 문서 작성, 화면 구조 설계, 문서 작성, 테이블 설계 및 ERD, 테이블 정의서 작성, 테스트 시나리오 작성, NER 인덱싱 오류 문제에 대한 문장별 request 설계, Huggingface Transformers 이용 BERTmodel 사용을 위한 서버 환경 설정, 구현 단계별 단위테스트 실행, AWS Lightsail(Linux) 서버(Nginx, Gunicorn) 환경 테스트, Chrome, Edge, Firefox 브라우저 통합 테스트
-	- 구현:기존 과제 연계 사용을 위한 1차 프로젝트 데이터 정제, Django framework를 사용하여 웹 UI설계·구현, HTML, Bootstrap4의 CSS·Javascript 이용 템플릿 구현, Django에서 제공하는 객체·관계형 데이터베이스 연결방식(ORM) 이용 SQLite 데이터베이스 구현, 뉴스 리스트 페이지 구현, 최신순·관련순 검색, 정렬, 페이지 기능 구현, 뉴스 본문 NER결과 페이지 구현, 어뷰징 뉴스 판별 Classifire 페이지 구현, 1차 수집·정제 데이터 사용 Gensim Word2Vec 모델 생성, 학습된 모델 이용 유사 키워드 기반 카테고라이저 구현
+	- 참여:과제 범위 확인, 구현 기능 설정, 요구사항 정의서 작성, 시스템 구조 설계, 문서 작성, 화면 구조 설계, 문서 작성, 테이블 설계 및 ERD, 테이블 정의서 작성, 테스트 시나리오 작성, NER 인덱싱 오류 문제에 대한 문장별 request 설계, Huggingface Transformers 이용 BERTmodel 사용을 위한 서버 환경 설정, 구현 단계별 단위테스트 실행, Chrome, Edge, Firefox 브라우저 통합 테스트
+	- 구현:기존 과제 연계 사용을 위한 1차 프로젝트 데이터 정제, Django framework를 사용하여 웹 UI설계·구현, HTML, Bootstrap4의 CSS·Javascript 이용 템플릿 구현, Django에서 제공하는 객체·관계형 데이터베이스 연결방식(ORM) 이용 SQLite 데이터베이스 구현, 뉴스 리스트 페이지 구현, 최신순·관련순 검색, 정렬, 페이지 기능 구현, 뉴스 본문 NER결과 페이지 구현, 어뷰징 뉴스 판별 Classifire 페이지 구현, 1차 수집·정제 데이터 사용 Gensim Word2Vec 모델 생성, 학습된 모델 이용 유사 키워드 기반 카테고라이저 구현, AWS Lightsail(Linux) 서버(Nginx, Gunicorn) 환경 테스트
