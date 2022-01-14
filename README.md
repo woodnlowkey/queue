@@ -42,7 +42,8 @@
 		- torch
 		- transformers
 	1. ### Django Project ###
-		- Templates(HTML, Bootstrap(CSS, JavaScript), ORM 사용)
+		- Templates:HTML, Bootstrap(CSS, JavaScript)
+		- Database:SQLite3(ORM)
 		- Named Entity Recognition(㈜TwoBlockAI에서 제공한 학습용 NER모델 API 활용)
 	2. ### Classifier ###
 		- Word2Vec:유사 키워드 기반 카테고라이저 구현
