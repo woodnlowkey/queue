@@ -31,7 +31,16 @@
 		- 함수 및 변수명 작성 규칙, 예외처리에 대한 부분, 주석 형식(작성일자, 작성자)
 		- 단위 테스트, 통합 테스트 시나리오 작성
 4. ## 구현 ##
-	- 환경[운영체제:Windows, Requirements:VisualStudioC++데스크톱개발환경설치/3.6.0<=Python<=3.9.0, Django/eunjeon/gensim/tensorflow>=2.0.0/torch/transformers설치]
+	- 환경
+		- 운영체제:Windows
+		- Requirements:VisualStudioC++데스크톱개발환경설치
+		- 3.6.0<=Python<=3.9.0
+		- Django
+		- eunjeon
+		- gensim
+		- tensorflow>=2.0.0
+		- torch
+		- transformers
 	1. ### Django Project ###
 		- Templates(HTML, Bootstrap(CSS, JavaScript), ORM 사용)
 		- Named Entity Recognition(㈜TwoBlockAI에서 제공한 학습용 NER모델 API 활용)
